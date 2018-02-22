@@ -26,23 +26,27 @@ public class SpawnController : MonoBehaviour {
                 case 0:
                     print("top");
                     spawnPosition = new Vector3(Random.Range(-2, 2), 0, 5f);
+                    spawnRotation = Quaternion.Euler(0, 180, 0);
                     break;
                 case 1:
                     print("right");
                     spawnPosition = new Vector3(10, 0, Random.Range(-4, 4));
+                    spawnRotation = Quaternion.Euler(0, 270, 0);
                     break;
                 case 2:
                     print("left");
                     spawnPosition = new Vector3(-10, 0, Random.Range(-4, 4));
+                    spawnRotation = Quaternion.Euler(0, 90, 0);
                     break;
                 case 3:
                     print("bottom");
-                    spawnPosition = new Vector3(Random.Range(-2, 2), 0, 5f);
+                    spawnPosition = new Vector3(Random.Range(-2, 2), 0, -5f);
+                    spawnRotation = Quaternion.Euler(0, 0, 0);
                     break;
             }
 
             
-            GameObject spawnedEnemy = Instantiate(enemy[Random.Range(0,17)], spawnPosition, spawnRotation);
+            GameObject spawnedEnemy = Instantiate(enemy[Random.Range(0,16)], spawnPosition, spawnRotation);
 
             yield return new WaitForSeconds(1);
         }

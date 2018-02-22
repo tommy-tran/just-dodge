@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour {
 
     public SpawnController spawner;
 
+
     void Start()
     {
         spawnWave();
@@ -14,6 +15,11 @@ public class GameController : MonoBehaviour {
     void spawnWave()
     {
         spawner.StartWave(0);
+    }
+
+    void FixedUpdate()
+    {
+        
     }
 
 }
