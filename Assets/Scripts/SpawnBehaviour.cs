@@ -8,6 +8,9 @@ public class SpawnBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         transform.position += transform.forward * Time.deltaTime * movementSpeed;
-        
 	}
+
+    void OnTriggerEnter(Collider other)
+    {
+    }
 }
