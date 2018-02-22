@@ -83,6 +83,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\SpawnController.cs" />
+    <Compile Include="Assets\amusedART\StoneMonster\Script\Animation_Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Characters\Haruko\ReadMe.txt" />
