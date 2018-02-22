@@ -43,5 +43,4 @@ public class PlayerMovement : MonoBehaviour {
         anim.SetBool("IsWalking", IsWalking);
         anim.SetBool("IsMoving", IsMoving);
     }
-
 }
