@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
     public float runSpeed = 5f;
     public float walkSpeed = 1f;
 
+    public GameController gameController;
     Vector3 movement;
     Animator anim;
     Rigidbody playerRigidbody;
+    public static bool movementEnabled = true;
 
     void Awake()
     {
@@ -18,10 +20,14 @@ public class PlayerMovement : MonoBehaviour {
 
     void FixedUpdate()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-        Move(h, v);
-        Animating(h, v);
+        if (movementEnabled)
+        {
+            float h = Input.GetAxisRaw("Horizontal");
+            float v = Input.GetAxisRaw("Vertical");
+            Move(h, v);
+            Animating(h, v);
+        }
+
     }
 
     void Move(float h, float v)
@@ -42,5 +48,19 @@ public class PlayerMovement : MonoBehaviour {
         
         anim.SetBool("IsWalking", IsWalking);
         anim.SetBool("IsMoving", IsMoving);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            PlayerDeath();
+        }
+    }
+
+    void PlayerDeath()
+    {
+        movementEnabled = false;
+        anim.SetBool("IsDead", true);
     }
 }

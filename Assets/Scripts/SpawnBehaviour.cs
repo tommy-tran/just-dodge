@@ -12,7 +12,6 @@ public class SpawnBehaviour : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        print(other.gameObject.tag);
         if (other.CompareTag("Boundary"))
         {
             Destroy(gameObject);

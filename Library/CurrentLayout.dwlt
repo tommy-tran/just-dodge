@@ -65,8 +65,8 @@ MonoBehaviour:
     y: 631
     width: 414
     height: 316
-  m_MinSize: {x: 104, y: 121}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_MinSize: {x: 204, y: 342}
   m_MaxSize: {x: 4004, y: 8042}
   vertical: 1
-  controlID: 71
+  controlID: 96
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -117,7 +117,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 392}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &6
 MonoBehaviour:
@@ -162,10 +162,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 917, y: 342}
+  m_MinSize: {x: 915, y: 342}
   m_MaxSize: {x: 22012, y: 10021}
   vertical: 0
-  controlID: 70
+  controlID: 22
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -206,10 +206,10 @@ MonoBehaviour:
     y: 0
     width: 835
     height: 947
-  m_MinSize: {x: 202, y: 342}
-  m_MaxSize: {x: 4002, y: 8042}
+  m_MinSize: {x: 200, y: 321}
+  m_MaxSize: {x: 4002, y: 8021}
   vertical: 1
-  controlID: 11
+  controlID: 23
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -228,8 +228,8 @@ MonoBehaviour:
     y: 0
     width: 414
     height: 631
-  m_MinSize: {x: 204, y: 221}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -278,8 +278,8 @@ MonoBehaviour:
     y: 0
     width: 835
     height: 486
-  m_MinSize: {x: 102, y: 121}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 18}
@@ -305,8 +305,8 @@ MonoBehaviour:
     y: 486
     width: 835
     height: 461
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 21}
   m_Panes:
   - {fileID: 21}
@@ -336,7 +336,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 92
-    width: 834
+    width: 833
     height: 465
   m_ViewPositions:
     m_KeySerializationHelper:
@@ -347,7 +347,7 @@ MonoBehaviour:
     - {fileID: 1107273435617174920, guid: 6d36177d8fc1df940a034e2171ee8a79, type: 2}
     m_ValueSerializationHelper:
     - {x: 452.40002, y: 257}
-    - {x: 450.40002, y: 277}
+    - {x: 590.80005, y: 250}
     - {x: 452.40002, y: 257}
     - {x: 452.40002, y: 257}
     - {x: 325.80005, y: 108}
@@ -362,7 +362,7 @@ MonoBehaviour:
   m_LiveLinkFollowTransitions: 0
   m_MiniTool: 0
   m_SerializedLocked: 0
-  m_CurrentEditor: 0
+  m_CurrentEditor: 1
   m_LayerEditor:
     m_SelectedLayerIndex: 0
 --- !u!114 &15
@@ -402,19 +402,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Prefabs/Ghost
+    - Assets/Prefabs/Slime
   m_ViewMode: 1
   m_StartGridSize: 65
   m_LastFolders:
-  - Assets/Prefabs/Ghost
+  - Assets/Prefabs/Slime
   m_LastFoldersGridSize: 65
   m_LastProjectPath: C:\Users\tome7\Desktop\repo\Just Dodge
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 06270000
-    m_LastClickedID: 9990
-    m_ExpandedIDs: 00000000fc240000b4250000ca250000782600007c27000000ca9a3bffffff7f
+    m_SelectedIDs: 48250000
+    m_LastClickedID: 9544
+    m_ExpandedIDs: 0000000008250000c0250000ca250000d625000084260000a0260000362700008827000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -442,7 +442,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000fc240000b4250000ca250000782600007c270000
+    m_ExpandedIDs: 0000000008250000c0250000d62500008426000088270000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -470,7 +470,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: 9e260000422600001c270000ee2600002c2600007025000088270000cc260000f02600002e260000722500001e27000052270000
+    m_ExpandedInstanceIDs: 9e260000422600001c270000ee2600002c2600007025000088270000cc260000f0260000722500001e270000522700002e2600002a270000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -555,9 +555,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.87135315, y: -2.4609375, z: 3.324707}
+    m_Target: {x: 0.04129516, y: -7.1445312, z: -1.2398987}
     speed: 2
-    m_Value: {x: 0.87135315, y: -2.4609375, z: 3.324707}
+    m_Value: {x: 0.04129516, y: -7.1445312, z: -1.2398987}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -580,13 +580,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.76393294, y: 0.0029037618, z: -0.0034377151, w: 0.64527965}
+    m_Target: {x: 0.7279978, y: -0.000000004016542, z: -0.000000006475397, w: 0.68557787}
     speed: 2
-    m_Value: {x: 0.7639331, y: 0.0029037625, z: -0.003437716, w: 0.6452798}
+    m_Value: {x: 0.7279986, y: -0.0000000040165467, z: -0.0000000064754047, w: 0.68557864}
   m_Size:
-    m_Target: 23.360996
+    m_Target: 4.018057
     speed: 2
-    m_Value: 23.360996
+    m_Value: 4.018057
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -651,20 +651,20 @@ MonoBehaviour:
     height: 610
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
-    m_LastClickedID: 0
-    m_ExpandedIDs: 449ff8ff6c8bfaff66cfffffd4fbffff0000000012280000
+    m_SelectedIDs: be270000
+    m_LastClickedID: 10174
+    m_ExpandedIDs: 82a4faff5670fbffd4fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: West
-      m_OriginalName: West
+      m_Name: GameController
+      m_OriginalName: GameController
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 10262
+      m_UserData: 10200
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
