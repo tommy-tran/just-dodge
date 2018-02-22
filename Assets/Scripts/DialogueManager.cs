@@ -11,7 +11,7 @@ public class DialogueManager : MonoBehaviour {
     public Animator anim;
     private bool state; // True when dialogue box is open
 
-	void Start () {
+	void Awake () {
         sentences = new Queue<string>();
 	}
 
@@ -56,7 +56,6 @@ public class DialogueManager : MonoBehaviour {
     void EndDialogue()
     {
         anim.SetBool("isOpen", false);
-        Debug.Log("End of conversation");
         state = false;
     }
 

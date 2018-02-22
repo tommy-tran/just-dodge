@@ -19,7 +19,6 @@ public class GameController : MonoBehaviour {
     IEnumerator waitForDialogue()
     {
         yield return new WaitUntil(() => !dialogueManager.getState());
-        Debug.Log("Finished dialogue");
         yield return new WaitForSeconds(2f);
         spawnWave();
         StartCoroutine(waitForWave());
@@ -27,8 +26,8 @@ public class GameController : MonoBehaviour {
 
     IEnumerator waitForWave()
     {
-        yield return new WaitUntil(() => GameObject.FindWithTag("Enemy") == null);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitUntil(() => spawner.remaining <= 0);
+        yield return new WaitForSeconds(4f);
         dialogueManager.StartDialogue(dialogueTrigger[level].dialogue);
         StartCoroutine(waitForDialogue());
     }
