@@ -1,8 +1,14 @@
 # Just Dodge
 ### Created in Unity3D
 ## Description
-Just Dodge is a simple game where the player is stuck within a small area and must avoid all incoming threats and obstacles to their characters.
-The objective of the game is to survive until you can defeat the boss.
+Just Dodge is a game where the player is stuck within a small area and must avoid all incoming threats and obstacles to their characters. 
+
+There are unique enemies throughout the levels:
+
+* Slime: Slow, can get big
+* Ghost: Disappears and reappears while moving through play area
+* Bat: Fast enemies but wings aren't dangerous
+* Bunny: Fast, deadliest common enemy
 
 # Controls
 Move up: :arrow_up:, [W]
