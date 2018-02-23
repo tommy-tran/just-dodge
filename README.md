@@ -38,3 +38,16 @@ Walk: Hold [Shift]
 [Haruko](https://assetstore.unity.com/packages/3d/haruko-69164)
 
 [Stone Floor Texture Tile](https://assetstore.unity.com/packages/2d/textures-materials/roads/stone-floor-texture-tile-18683)
+
+
+## To do
+* More interesting spawns during each round (eg. every 3rd round enemies only spawn on the side)
+* Leaderboard
+* Boss fight
+* Items/Power ups
+* Ability to get out of bad situation (high cooldown)
+* More enemies and danger mechanics
+* Music/Sound
+* Extra life
+* Right click movement
+* Multiplayer
