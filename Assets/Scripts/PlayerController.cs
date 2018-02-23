@@ -62,5 +62,6 @@ public class PlayerController : MonoBehaviour {
     {
         movementEnabled = false;
         anim.SetBool("IsDead", true);
+        gameController.GameOver();
     }
 }

@@ -22,8 +22,6 @@ public class SpawnController : MonoBehaviour {
         Quaternion spawnRotation = new Quaternion();
         float randomPos;
 
-        print(remaining);
-
         while (remaining > 0)
         {
             int side = Random.Range(0, 4);

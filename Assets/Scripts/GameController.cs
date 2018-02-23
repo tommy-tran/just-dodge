@@ -7,19 +7,22 @@ public class GameController : MonoBehaviour {
     public SpawnController spawner;
     public DialogueManager dialogueManager;
     public DialogueTrigger[] dialogueTrigger;
+    public DialogueTrigger GODialogueTrigger;
+    public GameObject gameoverBox;
     int level;
 
     void Start()
     {
         level = 0;
-        dialogueManager.StartDialogue(dialogueTrigger[level].dialogue);
+        dialogueManager.StartDialogue(dialogueTrigger[level].dialogue, true);
+        dialogueTrigger[level].TriggerDialog(true);
         StartCoroutine(waitForDialogue());
     }
 
     IEnumerator waitForDialogue()
     {
         yield return new WaitUntil(() => !dialogueManager.getState());
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         spawnWave();
         StartCoroutine(waitForWave());
     }
@@ -27,8 +30,8 @@ public class GameController : MonoBehaviour {
     IEnumerator waitForWave()
     {
         yield return new WaitUntil(() => spawner.remaining <= 0);
-        yield return new WaitForSeconds(4f);
-        dialogueManager.StartDialogue(dialogueTrigger[level].dialogue);
+        yield return new WaitForSeconds(10f);
+        dialogueTrigger[level].TriggerDialog(true);
         StartCoroutine(waitForDialogue());
     }
 
@@ -37,9 +40,10 @@ public class GameController : MonoBehaviour {
         spawner.StartWave(level++);
     }
 
-    void GameOver()
+    public void GameOver()
     {
-
+        gameoverBox.SetActive(true);
+        StopAllCoroutines();
+        GODialogueTrigger.TriggerDialog(false);
     }
-
 }

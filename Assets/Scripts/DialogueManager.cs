@@ -10,13 +10,15 @@ public class DialogueManager : MonoBehaviour {
     public Text dialogueText;
     public Animator anim;
     private bool state; // True when dialogue box is open
+    public GameObject continueButton;
 
 	void Awake () {
         sentences = new Queue<string>();
 	}
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(Dialogue dialogue, bool interactable)
     {
+        if (interactable) { continueButton.SetActive(true); } else { continueButton.SetActive(false); }
         anim.SetBool("isOpen", true);
         state = true;
         nameText.text = dialogue.name;
@@ -27,10 +29,10 @@ public class DialogueManager : MonoBehaviour {
             sentences.Enqueue(sentence);
         }
 
-        DisplayNextSentence();
+        if (interactable) { DisplayNextSentence(true); } else { DisplayNextSentence(false); }   
     }
 
-    public void DisplayNextSentence()
+    public void DisplayNextSentence(bool interactable = true)
     {
         if (sentences.Count == 0)
         {
@@ -41,6 +43,12 @@ public class DialogueManager : MonoBehaviour {
         string sentence = sentences.Dequeue();
         StopAllCoroutines(); // when user continues while sentence is animating
         StartCoroutine(TypeSentence(sentence));
+    }
+
+    IEnumerator AutoPlay()
+    {
+        yield return new WaitForSeconds(4f);
+        DisplayNextSentence(false);
     }
 
     IEnumerator TypeSentence (string sentence)
