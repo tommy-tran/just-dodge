@@ -31,7 +31,7 @@ public class GameController : MonoBehaviour {
     {
         yield return new WaitUntil(() => spawner.remaining <= 0);
         yield return new WaitForSeconds(10f);
-        dialogueTrigger[level].TriggerDialog(true);
+        dialogueTrigger[level].TriggerDialog(false);
         StartCoroutine(waitForDialogue());
     }
 
@@ -45,6 +45,7 @@ public class GameController : MonoBehaviour {
         gameoverBox.SetActive(true);
         StopAllCoroutines();
         dialogueManager.StopAllCoroutines();
+        spawner.StopAllCoroutines();
         GODialogueTrigger.TriggerDialog(false);
     }
 

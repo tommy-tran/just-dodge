@@ -38,8 +38,17 @@ public class PlayerController : MonoBehaviour {
         if (movement != Vector3.zero)
         {
             playerRigidbody.MovePosition(transform.position + movement);
+            restrictMovement();
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15F);
         }
+    }
+
+    void restrictMovement()
+    {
+        float x = Mathf.Clamp(playerRigidbody.position.x, -8f, 8f);
+        float y = playerRigidbody.position.y;
+        float z = Mathf.Clamp(playerRigidbody.position.z, -4.25f, 4.25f);
+        playerRigidbody.position = new Vector3(x, playerRigidbody.position.y, z);
     }
 
     void Animating(float h, float v)
