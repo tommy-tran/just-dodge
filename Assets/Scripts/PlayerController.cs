@@ -10,17 +10,18 @@ public class PlayerController : MonoBehaviour {
     Vector3 movement;
     Animator anim;
     Rigidbody playerRigidbody;
-    public static bool movementEnabled = true;
+    public bool isAlive;
 
     void Awake()
     {
+        isAlive = true;
         anim = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()
     {
-        if (movementEnabled)
+        if (isAlive)
         {
             float h = Input.GetAxisRaw("Horizontal");
             float v = Input.GetAxisRaw("Vertical");
@@ -52,7 +53,7 @@ public class PlayerController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy") && isAlive)
         {
             PlayerDeath();
         }
@@ -60,7 +61,7 @@ public class PlayerController : MonoBehaviour {
 
     void PlayerDeath()
     {
-        movementEnabled = false;
+        isAlive = false;
         anim.SetBool("IsDead", true);
         gameController.GameOver();
     }

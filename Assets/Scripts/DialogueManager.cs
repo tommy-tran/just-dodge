@@ -43,6 +43,7 @@ public class DialogueManager : MonoBehaviour {
         string sentence = sentences.Dequeue();
         StopAllCoroutines(); // when user continues while sentence is animating
         StartCoroutine(TypeSentence(sentence));
+        if (!interactable) StartCoroutine(AutoPlay());
     }
 
     IEnumerator AutoPlay()

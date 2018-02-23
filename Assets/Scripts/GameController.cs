@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
     public SpawnController spawner;
+    public PlayerController playerController;
     public DialogueManager dialogueManager;
     public DialogueTrigger[] dialogueTrigger;
     public DialogueTrigger GODialogueTrigger;
@@ -14,7 +15,6 @@ public class GameController : MonoBehaviour {
     void Start()
     {
         level = 0;
-        dialogueManager.StartDialogue(dialogueTrigger[level].dialogue, true);
         dialogueTrigger[level].TriggerDialog(true);
         StartCoroutine(waitForDialogue());
     }
@@ -44,6 +44,21 @@ public class GameController : MonoBehaviour {
     {
         gameoverBox.SetActive(true);
         StopAllCoroutines();
+        dialogueManager.StopAllCoroutines();
         GODialogueTrigger.TriggerDialog(false);
     }
+
+    public void Retry()
+    {
+        Start();
+        gameoverBox.SetActive(false);
+        GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            Destroy(enemy);
+        }
+        playerController.isAlive = true;
+    }
+
+
 }
