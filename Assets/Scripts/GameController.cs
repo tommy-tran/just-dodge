@@ -58,7 +58,7 @@ public class GameController : MonoBehaviour {
         {
             Destroy(enemy);
         }
-        playerController.isAlive = true;
+        playerController.PlayerAlive();
     }
 
 

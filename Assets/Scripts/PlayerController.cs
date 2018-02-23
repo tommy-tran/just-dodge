@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    public float runSpeed = 5f;
-    public float walkSpeed = 1f;
+    public float runSpeed = 2f;
+    public float walkSpeed = 0.2f;
 
     public GameController gameController;
     Vector3 movement;
@@ -73,5 +73,11 @@ public class PlayerController : MonoBehaviour {
         isAlive = false;
         anim.SetBool("IsDead", true);
         gameController.GameOver();
+    }
+
+    public void PlayerAlive()
+    {
+        isAlive = true;
+        anim.SetBool("IsDead", false);
     }
 }
