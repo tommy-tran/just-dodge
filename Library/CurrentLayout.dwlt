@@ -111,7 +111,7 @@ MonoBehaviour:
   m_MinSize: {x: 917, y: 392}
   m_MaxSize: {x: 22012, y: 14042}
   vertical: 0
-  controlID: 5362
+  controlID: 376
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_MinSize: {x: 204, y: 342}
   m_MaxSize: {x: 4004, y: 8042}
   vertical: 1
-  controlID: 5293
+  controlID: 377
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 392}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 5185
+  controlID: 511
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -419,7 +419,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 1ca7feffd8a7feffa8a8feff02dbfefff4dbfeffc8dcfeff66ebfeff2eecfefffeecfeff8e2affff5e2bffff322cffff9c50ffff6c51ffff3c52ffffe06effffa66fffff7670ffffd4fbffff000000003e280000fa2800000c290000aa400000964a00007c5100001452000046520000
+    m_ExpandedIDs: 4ae8ffff02e9ffffd2e9ffffd4fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -527,7 +527,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.5740126, y: -0.0012282713, z: 0.0008610184, w: -0.8188451}
     speed: 2
-    m_Value: {x: -0.5740126, y: -0.0012282713, z: 0.0008610184, w: -0.8188451}
+    m_Value: {x: -0.5740125, y: -0.0012282712, z: 0.0008610183, w: -0.81884503}
   m_Size:
     m_Target: 4.245234
     speed: 2
@@ -677,18 +677,18 @@ MonoBehaviour:
     m_ExpandedIDs: 0000000006250000ae250000d6250000e0250000ec250000ba260000d62600008a270000d027000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Ghost
-      m_OriginalName: Ghost
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 10068
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 11}
     m_SearchString: 
@@ -729,7 +729,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 9e260000422600001c270000ee2600002c2600007025000088270000cc260000722500001e270000522700002e2600002a270000e6680000e2680000006900009827000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0

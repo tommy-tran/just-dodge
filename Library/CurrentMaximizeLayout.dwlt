@@ -25,7 +25,7 @@ MonoBehaviour:
   m_MinSize: {x: 917, y: 392}
   m_MaxSize: {x: 22012, y: 14042}
   vertical: 0
-  controlID: 5130
+  controlID: 179
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -155,9 +155,9 @@ MonoBehaviour:
     height: 926
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 70620000
-    m_LastClickedID: 25200
-    m_ExpandedIDs: 02dbfefff4dbfeffc8dcfeff66ebfeff2eecfefffeecfeff8e2affff5e2bffff322cffff9c50ffff6c51ffff3c52ffffe06effffa66fffff7670ffffd4fbffff000000003e280000fa2800000c290000aa400000964a00007c5100001452000046520000
+    m_SelectedIDs: 68290000
+    m_LastClickedID: 10600
+    m_ExpandedIDs: d4fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_MinSize: {x: 204, y: 342}
   m_MaxSize: {x: 4004, y: 8042}
   vertical: 1
-  controlID: 5061
+  controlID: 74
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -284,14 +284,14 @@ MonoBehaviour:
     width: 835
     height: 465
   m_SceneLighting: 1
-  lastFramingTime: 3499.887463507214
+  lastFramingTime: 2097.56352529598
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 129.80301, y: -36.855175, z: -25.211578}
+    m_Target: {x: 1.5046252, y: -0.0822196, z: -1.9790277}
     speed: 2
-    m_Value: {x: 129.80301, y: -36.855175, z: -25.211578}
+    m_Value: {x: 1.5046252, y: -0.0822196, z: -1.9790277}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -314,13 +314,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0, y: 0, z: 0, w: 1}
+    m_Target: {x: -0.5740126, y: -0.0012282713, z: 0.0008610184, w: -0.8188451}
     speed: 2
-    m_Value: {x: -0, y: 0, z: -0, w: -1}
+    m_Value: {x: -0.5740125, y: -0.0012282712, z: 0.0008610183, w: -0.81884503}
   m_Size:
-    m_Target: 747.8698
+    m_Target: 4.245234
     speed: 2
-    m_Value: 747.8698
+    m_Value: 4.245234
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -373,12 +373,8 @@ MonoBehaviour:
     - {x: 325.80005, y: 108}
     - {x: 451.00003, y: 259}
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 837b0e8de7bcb254c9f1cb0f280f357b,
-    type: 2}
-  m_BreadCrumbs:
-  - m_Target: {fileID: 1107835355335852204, guid: 837b0e8de7bcb254c9f1cb0f280f357b,
-      type: 2}
-    m_ScrollPosition: {x: 0, y: 0}
+  m_AnimatorController: {fileID: 0}
+  m_BreadCrumbs: []
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
   blendTreeGraph: {fileID: 0}
@@ -467,7 +463,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 392}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 5083
+  controlID: 146
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -530,18 +526,18 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scripts
+    - Assets/Prefabs/Slime
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Prefabs/Slime
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\tome7\Desktop\repo\Just Dodge
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: f6260000
-    m_LastClickedID: 9974
+    m_SelectedIDs: 48250000
+    m_LastClickedID: 9544
     m_ExpandedIDs: 0000000006250000ae250000d6250000e0250000ec250000ba260000d62600008a270000d027000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -570,7 +566,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000006250000ae250000d6250000e0250000ec250000ba260000d62600008a270000d027000000ca9a3bffffff7f
+    m_ExpandedIDs: 0000000006250000ae250000d6250000e0250000ec250000ba260000d62600008a270000d0270000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -595,9 +591,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 70620000
-    m_LastClickedInstanceID: 25200
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 68290000
+    m_LastClickedInstanceID: 10600
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 9e260000422600001c270000ee2600002c2600007025000088270000cc260000722500001e270000522700002e2600002a270000e6680000e2680000006900009827000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
