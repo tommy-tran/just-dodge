@@ -327,7 +327,7 @@ public class SpawnController : MonoBehaviour {
             remaining -= numEnemies;
             if (numEnemies > 6)
             {
-                yield return new WaitForSeconds(Random.Range(0, 1f));
+                yield return new WaitForSeconds(Random.Range(0.5f, 2.5f));
             }
         }
     }
