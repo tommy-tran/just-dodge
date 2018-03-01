@@ -46,7 +46,6 @@ public class PlayerController : MonoBehaviour {
     void restrictMovement()
     {
         float x = Mathf.Clamp(playerRigidbody.position.x, -8f, 8f);
-        float y = playerRigidbody.position.y;
         float z = Mathf.Clamp(playerRigidbody.position.z, -4.25f, 4.25f);
         playerRigidbody.position = new Vector3(x, playerRigidbody.position.y, z);
     }

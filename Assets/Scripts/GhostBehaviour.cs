@@ -14,10 +14,9 @@ public class GhostBehaviour : SpawnBehaviour {
 
     IEnumerator Visibility()
     {
-        
-        yield return new WaitForSeconds(Random.Range(1.4f, 1.6f));
+        yield return new WaitForSeconds(Random.Range(0.9f, 1.1f));
         renderer.enabled = false;
-        yield return new WaitForSeconds(Random.Range(0.4f, 0.6f));
+        yield return new WaitForSeconds(Random.Range(0.8f, 0.9f));
         renderer.enabled = true;
         yield return StartCoroutine(Visibility());
     }
