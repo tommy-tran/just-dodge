@@ -1,14 +1,18 @@
-# Just Dodge
-### Created in Unity3D
+# Just Dodge 
+#### Created in Unity3D 
+#### [Click here to try!](https://tommytran.xyz/just-dodge)
+## Status
+In development
+
 ## Description
 Just Dodge is a game where the player is stuck within a small area and must avoid all incoming threats and obstacles to their characters. 
 
 There are unique enemies throughout the levels:
 
-* Slime: Slow, can get big
-* Ghost: Disappears and reappears while moving through play area
-* Bat: Fast enemies but wings aren't dangerous
-* Bunny: Fast, deadliest common enemy
+* Slime: Normal enemy
+* Ghost: Disappears and reappears while moving through play area (still can get hit when they are invisible)
+* Bat: Fast enemies, wings aren't dangerous, speed up in play area
+* Bunny: Fast, weird jumping animation
 
 # Controls
 Move up: :arrow_up:, [W]
@@ -40,7 +44,7 @@ Walk: Hold [Shift]
 [Stone Floor Texture Tile](https://assetstore.unity.com/packages/2d/textures-materials/roads/stone-floor-texture-tile-18683)
 
 
-## To do
+## To do (may not implement some of these)
 * More interesting spawns during each round (eg. every 3rd round enemies only spawn on the side)
 * Leaderboard
 * Boss fight
@@ -48,6 +52,8 @@ Walk: Hold [Shift]
 * Ability to get out of bad situation (high cooldown)
 * More enemies and danger mechanics
 * Music/Sound
-* Extra life
+* Extra life (every 5th round?)
+* Endless stages
+* Collect coins for extra points
 * Right click movement
 * Multiplayer
