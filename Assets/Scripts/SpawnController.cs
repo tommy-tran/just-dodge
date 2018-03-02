@@ -91,11 +91,11 @@ public class SpawnController : MonoBehaviour {
                         spawnRotation = Quaternion.Euler(0, 180, 0);
                         break;
                     case 1:
-                        spawnPosition = new Vector3(14, 0, Random.Range(-4, 4));
+                        spawnPosition = new Vector3(13, 0, Random.Range(-4, 4));
                         spawnRotation = Quaternion.Euler(0, 270, 0);
                         break;
                     case 2:
-                        spawnPosition = new Vector3(-14, 0, Random.Range(-4, 4));
+                        spawnPosition = new Vector3(-13, 0, Random.Range(-4, 4));
                         spawnRotation = Quaternion.Euler(0, 90, 0);
                         break;
                     case 3:
@@ -157,7 +157,7 @@ public class SpawnController : MonoBehaviour {
                 case 1:
                     numEnemies = Mathf.RoundToInt(Mathf.Clamp(Random.Range(1f, 6f), 1, 6));
                     randomPos = Random.Range(-4f, 4f);
-                    spawnPosition = new Vector3(14, 0, randomPos);
+                    spawnPosition = new Vector3(13, 0, randomPos);
                     spawnRotation = Quaternion.Euler(0, 270, 0);
                     if (randomPos - numEnemies * (radius + 1) > -4f || (randomPos + numEnemies * (radius + 1)) < 4f)
                     {
@@ -188,14 +188,14 @@ public class SpawnController : MonoBehaviour {
                     }
                     else // Spawn full line
                     {
-                        spawnPosition = new Vector3(14f, 0, -4f);
+                        spawnPosition = new Vector3(13f, 0, -4f);
                         spawnLine(side, currentEnemy, spawnPosition, spawnRotation, radius);
                     }
                     break;
                 case 2:
                     numEnemies = Mathf.RoundToInt(Mathf.Clamp(Random.Range(1f, 6f), 1, 6));
                     randomPos = Random.Range(-4f, 4f);
-                    spawnPosition = new Vector3(-14, 0, randomPos);
+                    spawnPosition = new Vector3(-13, 0, randomPos);
                     spawnRotation = Quaternion.Euler(0, 90, 0);
                     if (randomPos - numEnemies * (radius + 1) > -4f || (randomPos + numEnemies * (radius + 1)) < 4f)
                     {
@@ -226,7 +226,7 @@ public class SpawnController : MonoBehaviour {
                     }
                     else // Spawn full line
                     {
-                        spawnPosition = new Vector3(-14f, 0, -4f);
+                        spawnPosition = new Vector3(-13f, 0, -4f);
                         spawnLine(side, currentEnemy, spawnPosition, spawnRotation, radius);
                     }
                     break;
