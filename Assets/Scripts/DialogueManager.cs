@@ -48,7 +48,7 @@ public class DialogueManager : MonoBehaviour {
 
     IEnumerator AutoPlay()
     {
-        yield return new WaitForSeconds(3.8f);
+        yield return new WaitForSeconds(4.4f);
         DisplayNextSentence(false);
     }
 

@@ -286,6 +286,7 @@ public class SpawnController : MonoBehaviour {
             if (Random.Range(0, 1f) <= pseudoRandom)
             {
                 enemiesRemoved++;
+                pseudoRandom /= 1.2f;
                 continue;
             }
             else if ((i == numEnemies - 1) && enemiesRemoved == 0)
