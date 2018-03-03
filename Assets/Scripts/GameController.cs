@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
-    public SpawnController spawner;
+    public SpawnController spawnController;
+    public SoundController soundController;
     public PlayerController playerController;
     public DialogueManager dialogueManager;
     public DialogueTrigger[] dialogueTrigger;
@@ -29,7 +30,7 @@ public class GameController : MonoBehaviour {
 
     IEnumerator waitForWave()
     {
-        yield return new WaitUntil(() => spawner.remaining <= 0);
+        yield return new WaitUntil(() => spawnController.remaining <= 0);
         yield return new WaitForSeconds(10f);
         dialogueTrigger[level].TriggerDialog(false);
         StartCoroutine(waitForDialogue());
@@ -37,7 +38,7 @@ public class GameController : MonoBehaviour {
 
     void spawnWave()
     {
-        spawner.StartWave(level++);
+        spawnController.StartWave(level++);
     }
 
     public void GameOver()
@@ -45,7 +46,7 @@ public class GameController : MonoBehaviour {
         gameoverBox.SetActive(true);
         StopAllCoroutines();
         dialogueManager.StopAllCoroutines();
-        spawner.StopAllCoroutines();
+        spawnController.StopAllCoroutines();
         GODialogueTrigger.TriggerDialog(false);
     }
 
