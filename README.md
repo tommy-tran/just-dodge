@@ -43,17 +43,29 @@ Walk: Hold [Shift]
 
 [Stone Floor Texture Tile](https://assetstore.unity.com/packages/2d/textures-materials/roads/stone-floor-texture-tile-18683)
 
+[Stone Monster (not yet used)](https://assetstore.unity.com/packages/3d/characters/stone-monster-101433)
+
+[Fantasy Sfx](https://assetstore.unity.com/packages/audio/sound-fx/fantasy-sfx-32833)
+
+* The heart sprite and damage sound were created by me
+
+## Music
+* Electroman Adventures - Waterflame
+* Krayzius & Brainstorm – Virtual Boy
+* Time Leaper – Hinkik
+* Ena – Hinkik
+* Explorers - Hinkik
+* DJ ASSASS1N - Frag Out (not yet used, boss theme)
+
+All music is free to use with credit of artists
+
 
 ## To do (may not implement some of these)
 * More interesting spawns during each round (eg. every 3rd round enemies only spawn on the side)
 * Leaderboard
 * Boss fight
-* Items/Power ups
-* Ability to get out of bad situation (high cooldown)
 * More enemies and danger mechanics
-* Music/Sound
-* Extra life (every 5th round?)
+* Way to get extra health
 * Endless stages
 * Collect coins for extra points
-* Right click movement
 * Multiplayer
