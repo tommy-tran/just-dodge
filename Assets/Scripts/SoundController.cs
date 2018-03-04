@@ -6,7 +6,9 @@ using UnityEngine.Audio;
 public class SoundController : MonoBehaviour {
     public AudioClip[] bgm;
     public AudioClip bossMusic;
-    public AudioSource audioSource;
+    public AudioClip damageSound;
+    public AudioSource musicSource;
+    public AudioSource soundSource;
     public float volume;
     public bool isMuted;
 
@@ -15,21 +17,27 @@ public class SoundController : MonoBehaviour {
     void Awake()
     {
         currentSong = 0;
-        audioSource.clip = bgm[currentSong];
-        audioSource.volume = volume;
-        audioSource.Play();
+        musicSource.clip = bgm[currentSong];
+        musicSource.volume = volume;
+        musicSource.Play();
+    }
+
+    public void playDamageSound()
+    {
+        soundSource.clip = damageSound;
+        soundSource.Play();
     }
 
     public void play()
     {
-        audioSource.Play();
+        musicSource.Play();
     }
 
     public void nextSong()
     {
         currentSong += 1;
         currentSong = currentSong % bgm.Length;
-        audioSource.clip = bgm[currentSong];
+        musicSource.clip = bgm[currentSong];
         play();
     }
 
@@ -40,7 +48,7 @@ public class SoundController : MonoBehaviour {
         {
             currentSong = bgm.Length - 1;
         }
-        audioSource.clip = bgm[currentSong];
+        musicSource.clip = bgm[currentSong];
         play();
     }
 
@@ -50,11 +58,11 @@ public class SoundController : MonoBehaviour {
 
         if (isMuted)
         {
-            audioSource.mute = true;
+            musicSource.mute = true;
         }
         else
         {
-            audioSource.mute = false;
+            musicSource.mute = false;
         }
     }
 }

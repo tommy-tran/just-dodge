@@ -5,18 +5,26 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     public float runSpeed = 2f;
     public float walkSpeed = 0.2f;
-
+    public bool isAlive;
     public GameController gameController;
+    public GameObject[] hearts;
+    public SoundController soundController;
+
     Vector3 movement;
     Animator anim;
     Rigidbody playerRigidbody;
-    public bool isAlive;
+    int health;
+    bool invulnerable;
+
 
     void Awake()
     {
+        health = 2;
         isAlive = true;
         anim = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
+        updateHealth();
+        invulnerable = false;
     }
 
     void FixedUpdate()
@@ -43,6 +51,21 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    void updateHealth()
+    {
+        int temp = health;
+        foreach (GameObject heart in hearts)
+        {
+            if (temp-- >= 1)
+            {
+                heart.SetActive(true);
+            } else
+            {
+                heart.SetActive(false);
+            }
+        }
+    }
+
     void restrictMovement()
     {
         float x = Mathf.Clamp(playerRigidbody.position.x, -8f, 8f);
@@ -61,10 +84,47 @@ public class PlayerController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy") && isAlive)
+        if (other.CompareTag("Enemy") && isAlive && !invulnerable)
+        {
+            PlayerDamage();
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Enemy") && isAlive && !invulnerable)
+        {
+            PlayerDamage();
+        }
+    }
+
+    void PlayerDamage()
+    {
+        soundController.playDamageSound();
+        health--;
+        updateHealth();
+        if (health < 1)
         {
             PlayerDeath();
+        } else
+        {
+            StartCoroutine(invulnerability());
         }
+
+    }
+
+    IEnumerator invulnerability()
+    {
+        invulnerable = true;
+        Renderer renderer = gameObject.GetComponentInChildren<Renderer>();
+        for (int i = 0; i < 3; i++)
+        {
+            renderer.enabled = false;
+            yield return new WaitForSeconds(0.2f);
+            renderer.enabled = true;
+            yield return new WaitForSeconds(0.2f);
+        }
+        invulnerable = false;
     }
 
     void PlayerDeath()
@@ -74,8 +134,10 @@ public class PlayerController : MonoBehaviour {
         gameController.GameOver();
     }
 
-    public void PlayerAlive()
+    public void retry()
     {
+        health = 2;
+        updateHealth();
         isAlive = true;
         anim.SetBool("IsDead", false);
     }

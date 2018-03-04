@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour {
     public DialogueTrigger[] dialogueTrigger;
     public DialogueTrigger GODialogueTrigger;
     public GameObject gameoverBox;
+
     int level;
 
     void Start()
@@ -59,7 +60,7 @@ public class GameController : MonoBehaviour {
         {
             Destroy(enemy);
         }
-        playerController.PlayerAlive();
+        playerController.retry();
     }
 
 

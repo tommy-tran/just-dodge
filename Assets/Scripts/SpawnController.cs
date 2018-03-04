@@ -107,7 +107,7 @@ public class SpawnController : MonoBehaviour {
 
                 Instantiate(currentEnemy, spawnPosition, spawnRotation);
                 remaining--;
-                yield return new WaitForSeconds(Random.Range(0.1f, 1f));
+                yield return new WaitForSeconds(Random.Range(0.1f, 0.6f));
                 continue;
 
             }
@@ -272,7 +272,7 @@ public class SpawnController : MonoBehaviour {
             remaining -= numEnemies;
             if (numEnemies > 6)
             {
-                yield return new WaitForSeconds(Random.Range(2f, 4f));
+                yield return new WaitForSeconds(Random.Range(1f, 3f));
             }
         }
     }
