@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
@@ -11,6 +12,7 @@ public class GameController : MonoBehaviour {
     public DialogueTrigger[] dialogueTrigger;
     public DialogueTrigger GODialogueTrigger;
     public GameObject gameoverBox;
+    public GameObject scoreText;
 
     int level;
 
@@ -24,7 +26,7 @@ public class GameController : MonoBehaviour {
     IEnumerator waitForDialogue()
     {
         yield return new WaitUntil(() => !dialogueManager.getState());
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(4f);
         spawnWave();
         StartCoroutine(waitForWave());
     }
@@ -32,7 +34,7 @@ public class GameController : MonoBehaviour {
     IEnumerator waitForWave()
     {
         yield return new WaitUntil(() => spawnController.remaining <= 0);
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
         dialogueTrigger[level].TriggerDialog(false);
         StartCoroutine(waitForDialogue());
     }
@@ -44,6 +46,7 @@ public class GameController : MonoBehaviour {
 
     public void GameOver()
     {
+        scoreText.GetComponent<Text>().text = (level).ToString();
         gameoverBox.SetActive(true);
         StopAllCoroutines();
         dialogueManager.StopAllCoroutines();

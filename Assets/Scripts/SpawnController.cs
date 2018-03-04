@@ -23,7 +23,7 @@ public class SpawnController : MonoBehaviour {
 
     IEnumerator spawn(int level)
     {
-        remaining = level * 10 + 30;
+        remaining = level * 6 + 50;
         switch (level)
         {
             case 0:
@@ -272,7 +272,7 @@ public class SpawnController : MonoBehaviour {
             remaining -= numEnemies;
             if (numEnemies > 6)
             {
-                yield return new WaitForSeconds(Random.Range(1f, 3f));
+                yield return new WaitForSeconds(Random.Range(1.5f, 2.5f));
             }
         }
     }
