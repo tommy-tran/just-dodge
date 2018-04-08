@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnBehaviour : MonoBehaviour {
     public float movementSpeed;
+    ScoreController scoreController;
 	
 	// Update is called once per frame
 	void Update () {
@@ -12,9 +13,11 @@ public class SpawnBehaviour : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
+        scoreController = GameObject.FindObjectOfType<ScoreController>();
         if (other.CompareTag("Boundary"))
         {
-            Destroy(gameObject);
+            scoreController.dodgedEnemy();
+            Destroy(this.gameObject);
         }
     }
 }

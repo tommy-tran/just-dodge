@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -7,6 +8,7 @@ public class SoundController : MonoBehaviour {
     public AudioClip[] bgm;
     public AudioClip bossMusic;
     public AudioClip damageSound;
+    public AudioClip coinSound;
     public AudioSource musicSource;
     public AudioSource soundSource;
     public float volume;
@@ -25,6 +27,12 @@ public class SoundController : MonoBehaviour {
     public void playDamageSound()
     {
         soundSource.clip = damageSound;
+        soundSource.Play();
+    }
+
+    public void playCoinSound()
+    {
+        soundSource.clip = coinSound;
         soundSource.Play();
     }
 
@@ -64,5 +72,14 @@ public class SoundController : MonoBehaviour {
         {
             musicSource.mute = false;
         }
+    }
+
+    public void startBossTheme()
+    {
+        Array.Resize(ref bgm, bgm.Length + 1);
+        bgm[bgm.Length - 1] = bossMusic;
+        currentSong = bgm.Length - 1;
+        musicSource.clip = bgm[currentSong];
+        play();
     }
 }

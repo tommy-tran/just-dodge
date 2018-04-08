@@ -6,24 +6,37 @@ public class SpawnController : MonoBehaviour {
 
     public GameObject[] enemy;
     public int remaining;
+    public bool bossAlive;
+    public GameObject ally;
+    public GameObject bigBoss;
+    public GameObject bossMinions;
+    public GameObject dangerCircle;
+    public GameObject coin;
+    Coroutine coinCreator;
+    Coroutine circleCreator;
     int numEnemies;
     int spawnRate;
-    int enemyFloor; // Used for controlling monster spawns
+    int enemyFloor;
     int enemyCeiling;
+    int spawnLimiter;
 
     void Start()
     {
         enemyFloor = 0;
+        bossAlive = true;
+        spawnLimiter = 5;
     }
 
     public void StartWave(int level)
     {
+        spawnLimiter = 10 + level;
+        coinCreator = StartCoroutine(createCoin());
         StartCoroutine(spawn(level));
     }
 
     IEnumerator spawn(int level)
     {
-        remaining = level * 6 + 50;
+        remaining = level * 10 + 30;
         switch (level)
         {
             case 0:
@@ -66,6 +79,10 @@ public class SpawnController : MonoBehaviour {
                 enemyFloor = 12;
                 enemyCeiling = 15;
                 break;
+            case 10:
+                enemyFloor = 16;
+                enemyCeiling = 17;
+                break;
         }
 
         Vector3 spawnPosition = new Vector3(0, 0, 0);
@@ -75,6 +92,8 @@ public class SpawnController : MonoBehaviour {
         GameObject currentEnemy;
         float radius;
 
+
+
         while (remaining > 0)
         {
             side = Random.Range(0, 4);
@@ -82,7 +101,7 @@ public class SpawnController : MonoBehaviour {
             radius = currentEnemy.transform.GetComponent<CapsuleCollider>().radius;
 
             // 75% Chance of spawning one enemy at a time
-            if (Random.Range(0, 5) < 4)
+            if (Random.Range(0, 10) < 9)
             {
                 switch (side)
                 {
@@ -107,9 +126,8 @@ public class SpawnController : MonoBehaviour {
 
                 Instantiate(currentEnemy, spawnPosition, spawnRotation);
                 remaining--;
-                yield return new WaitForSeconds(Random.Range(0.1f, 0.6f));
+                yield return new WaitForSeconds(Random.Range(0.1f, 1f));
                 continue;
-
             }
 
             // 20% Chance of spawning more than one enemy at a time
@@ -270,11 +288,14 @@ public class SpawnController : MonoBehaviour {
                     break;
             }
             remaining -= numEnemies;
-            if (numEnemies > 6)
+            if (numEnemies > 5)
             {
-                yield return new WaitForSeconds(Random.Range(1.5f, 2.5f));
+                yield return new WaitForSeconds(Random.Range(1f, 2f));
             }
+            
+            yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Enemy").Length <= spawnLimiter);
         }
+        StopCoroutine(coinCreator);
     }
 
     void spawnLine(int side, GameObject currentEnemy, Vector3 spawnPosition, Quaternion spawnRotation, float radius)
@@ -315,4 +336,90 @@ public class SpawnController : MonoBehaviour {
         }
     }
 
+
+    IEnumerator bossWave(BossBehaviour behaviour)
+    {
+        yield return new WaitUntil(() => behaviour.arrived);
+        yield return new WaitForSeconds(3f);
+        remaining = Random.Range(20, 30);
+        Vector3 spawnPosition = new Vector3(0, 0, 0);
+        Quaternion spawnRotation = new Quaternion();
+        int side;
+        float radius;
+
+        while (bossAlive)
+        {
+            side = Random.Range(0, 4);
+            radius = bossMinions.transform.GetComponent<CapsuleCollider>().radius;
+            switch (side)
+            {
+                case 0:
+                    spawnPosition = new Vector3(Random.Range(-8f, 8f), 0, 8);
+                    spawnRotation = Quaternion.Euler(0, 180, 0);
+                    break;
+                case 1:
+                    spawnPosition = new Vector3(13, 0, Random.Range(-4, 4));
+                    spawnRotation = Quaternion.Euler(0, 270, 0);
+                    break;
+                case 2:
+                    spawnPosition = new Vector3(-13, 0, Random.Range(-4, 4));
+                    spawnRotation = Quaternion.Euler(0, 90, 0);
+                    break;
+                case 3:
+                    spawnPosition = new Vector3(Random.Range(-8f, 8f), 0, -8f);
+                    spawnRotation = Quaternion.Euler(0, 0, 0);
+                    break;
+            }
+
+            remaining--;
+            if (remaining <= 0)
+            {
+                remaining = Random.Range(30, 50);
+                Instantiate(ally, spawnPosition, spawnRotation);
+            } else
+            {
+                Instantiate(bossMinions, spawnPosition, spawnRotation);
+            }
+            yield return new WaitForSeconds(Random.Range(0.1f, 0.75f));
+        }
+        StopCoroutine(createCircle());
+    }
+
+    public void spawnBoss()
+    {
+        GameObject boss = Instantiate(bigBoss);
+        BossBehaviour bossBehaviour = boss.GetComponent<BossBehaviour>();
+        StartCoroutine(bossWave(bossBehaviour));
+        circleCreator = StartCoroutine(createCircle());
+        coinCreator = StartCoroutine(createCoin());
+        StartCoroutine(bossDeath());
+    }
+
+    IEnumerator createCircle()
+    {
+        float radius = dangerCircle.transform.GetComponent<SphereCollider>().radius;
+        
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(2, 8));
+            Instantiate(dangerCircle, new Vector3(Random.Range(-8f + radius, 8f - radius), 0, Random.Range(-4.25f + radius, 4.25f - radius)), Quaternion.Euler(90, 0, 0));
+        }
+    }
+
+    IEnumerator createCoin()
+    {
+        float radius = coin.transform.GetComponent<SphereCollider>().radius;
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(3, 14));
+            Instantiate(coin, new Vector3(Random.Range(-8f + radius, 8f - radius), 0.5f, Random.Range(-4.25f + radius, 4.25f - radius)), Quaternion.Euler(90, 0, 0));
+        }
+    }
+
+    IEnumerator bossDeath()
+    {
+        yield return new WaitUntil(() => !bossAlive);
+        StopCoroutine(circleCreator);
+        StopCoroutine(coinCreator);
+    }
 }

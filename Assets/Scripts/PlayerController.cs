@@ -9,17 +9,21 @@ public class PlayerController : MonoBehaviour {
     public GameController gameController;
     public GameObject[] hearts;
     public SoundController soundController;
+    public bool invulnerable;
+    public int health;
 
     Vector3 movement;
     Animator anim;
     Rigidbody playerRigidbody;
-    int health;
-    bool invulnerable;
+    
+    
+    float v;
+    float h;
 
 
     void Awake()
     {
-        health = 2;
+        health = 3;
         isAlive = true;
         anim = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
@@ -31,8 +35,8 @@ public class PlayerController : MonoBehaviour {
     {
         if (isAlive)
         {
-            float h = Input.GetAxisRaw("Horizontal");
-            float v = Input.GetAxisRaw("Vertical");
+            h = Input.GetAxisRaw("Horizontal");
+            v = Input.GetAxisRaw("Vertical");
             Move(h, v);
             Animating(h, v);
         }
@@ -47,7 +51,7 @@ public class PlayerController : MonoBehaviour {
         {
             playerRigidbody.MovePosition(transform.position + movement);
             restrictMovement();
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15F);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15f);
         }
     }
 
@@ -98,7 +102,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void PlayerDamage()
+    public void PlayerDamage()
     {
         soundController.playDamageSound();
         health--;
@@ -136,7 +140,7 @@ public class PlayerController : MonoBehaviour {
 
     public void retry()
     {
-        health = 2;
+        health = 3;
         updateHealth();
         isAlive = true;
         anim.SetBool("IsDead", false);
