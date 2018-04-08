@@ -12,10 +12,12 @@ public class GameController : MonoBehaviour {
     public DialogueTrigger[] dialogueTrigger;
     public DialogueTrigger GODialogueTrigger;
     public DialogueTrigger winDialogueTrigger;
+    public DialogueTrigger healthDialogueTrigger;
     public GameObject gameoverBox;
     public GameObject gameoverText;
     public GameObject scoreText;
     public ScoreController scoreController;
+    bool gotHealth;
 
     int level;
 
@@ -23,6 +25,7 @@ public class GameController : MonoBehaviour {
     {
         level = 0;
         dialogueTrigger[level].TriggerDialog(true);
+        gotHealth = false;
         StartCoroutine(waitForDialogue());
     }
 
@@ -38,6 +41,23 @@ public class GameController : MonoBehaviour {
         {
             spawnWave();
             StartCoroutine(waitForWave());
+        }
+
+        yield return new WaitForSeconds(Random.Range(5f, 9f));
+        if (playerController.health < 2 && level % 3 == 0 && !gotHealth)
+        {
+            if (Random.Range(0, 5) < 3)
+            {
+                healthDialogueTrigger.TriggerDialog(false);
+                spawnController.spawnHealth();
+                gotHealth = true;
+            }
+            else if (level == 9)
+            {
+                healthDialogueTrigger.TriggerDialog(false);
+                spawnController.spawnHealth();
+                gotHealth = true;
+            }
         }
         
     }
@@ -70,7 +90,7 @@ public class GameController : MonoBehaviour {
     void win()
     {
         gameoverText.GetComponent<Text>().text = "You win!";
-        scoreController.setScore(true);
+        scoreController.win();
         gameoverBox.SetActive(true);
         StopAllCoroutines();
         dialogueManager.StopAllCoroutines();
@@ -81,7 +101,7 @@ public class GameController : MonoBehaviour {
     public void GameOver()
     {
         gameoverText.GetComponent<Text>().text = "Game Over";
-        scoreController.setScore(false);
+        scoreController.setScore();
         gameoverBox.SetActive(true);
         StopAllCoroutines();
         dialogueManager.StopAllCoroutines();
@@ -93,9 +113,20 @@ public class GameController : MonoBehaviour {
     {
         Start();
         scoreController.resetScore();
+        scoreController.setScore();
         gameoverBox.SetActive(false);
         GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            Destroy(enemy);
+        }
+
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Minion"))
+        {
+            Destroy(enemy);
+        }
+
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Item"))
         {
             Destroy(enemy);
         }

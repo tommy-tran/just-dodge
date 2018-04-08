@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ScoreController : MonoBehaviour {
     int score;
+    int minionCount;
     public GameObject scoreText;
     public GameObject gameOverScoreText;
     public PlayerController playerController;
@@ -26,6 +27,7 @@ public class ScoreController : MonoBehaviour {
     private void Start()
     {
         score = 0;
+        minionCount = 0;
     }
 
     public void gotCoin()
@@ -35,26 +37,63 @@ public class ScoreController : MonoBehaviour {
         soundController.playCoinSound();
     }
 
+    public void gotDiamond()
+    {
+        score += 100;
+        updateScore();
+        soundController.playDiamondSound();
+    }
+
     public void dodgedEnemy()
     {
         score++;
         updateScore();
     }
 
+    public void dodgedMinion()
+    {
+        minionCount++;
+        if (minionCount > 4)
+        {
+            score++;
+            minionCount = 0;
+        }
+        updateScore();
+    }
+
     public void resetScore()
     {
         score = 0;
+        updateScore();
+    }
+
+    public void missedAlly()
+    {
+        score -= 20;
+        updateScore();
+    }
+
+    public void gotAlly()
+    {
+        score += 50;
+        updateScore();
     }
 
     void updateScore()
     {
         scoreText.GetComponent<Text>().text = (score).ToString();
+        setScore();
     }
 
-    public void setScore(bool bossDefeated)
+    public void win()
     {
-        if (bossDefeated) { score += 400; }
-        score += playerController.health * 200;
+        score += 300;
+        score += playerController.health * 100;
+        setScore();
+    }
+
+    public void setScore()
+    {
         gameOverScoreText.GetComponent<Text>().text = (score).ToString();
     }
 }

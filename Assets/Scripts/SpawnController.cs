@@ -12,6 +12,9 @@ public class SpawnController : MonoBehaviour {
     public GameObject bossMinions;
     public GameObject dangerCircle;
     public GameObject coin;
+    public GameObject diamond;
+    public GameObject firstAid;
+    public DialogueTrigger soldierDialogue;
     Coroutine coinCreator;
     Coroutine circleCreator;
     int numEnemies;
@@ -24,19 +27,20 @@ public class SpawnController : MonoBehaviour {
     {
         enemyFloor = 0;
         bossAlive = true;
-        spawnLimiter = 5;
+        spawnLimiter = 0;
     }
 
     public void StartWave(int level)
     {
-        spawnLimiter = 10 + level;
+        spawnLimiter = 7 + level;
         coinCreator = StartCoroutine(createCoin());
+        if (level == 2) { StartCoroutine(createDiamond()); }
         StartCoroutine(spawn(level));
     }
 
     IEnumerator spawn(int level)
     {
-        remaining = level * 10 + 30;
+        remaining = level * 10 + 40;
         switch (level)
         {
             case 0:
@@ -100,7 +104,7 @@ public class SpawnController : MonoBehaviour {
             currentEnemy = enemy[Random.Range(enemyFloor, enemyCeiling + 1)];
             radius = currentEnemy.transform.GetComponent<CapsuleCollider>().radius;
 
-            // 75% Chance of spawning one enemy at a time
+            // 90% Chance of spawning one enemy at a time
             if (Random.Range(0, 10) < 9)
             {
                 switch (side)
@@ -339,13 +343,22 @@ public class SpawnController : MonoBehaviour {
 
     IEnumerator bossWave(BossBehaviour behaviour)
     {
-        yield return new WaitUntil(() => behaviour.arrived);
-        yield return new WaitForSeconds(3f);
-        remaining = Random.Range(20, 30);
-        Vector3 spawnPosition = new Vector3(0, 0, 0);
-        Quaternion spawnRotation = new Quaternion();
         int side;
         float radius;
+        float min = 0.01f;
+        float max = 0.1f;
+        int multiplier = 0;
+
+        yield return new WaitUntil(() => behaviour.arrived);
+        yield return new WaitForSeconds(3f);
+
+        circleCreator = StartCoroutine(createCircle());
+        coinCreator = StartCoroutine(createCoin());
+        remaining = Random.Range(20, 30);
+
+        Vector3 spawnPosition = new Vector3(0, 0, 0);
+        Quaternion spawnRotation = new Quaternion();
+
 
         while (bossAlive)
         {
@@ -374,15 +387,33 @@ public class SpawnController : MonoBehaviour {
             remaining--;
             if (remaining <= 0)
             {
-                remaining = Random.Range(30, 50);
+                if (multiplier < 9)
+                {
+                    if (multiplier == 0)
+                    {
+                        StartCoroutine(soldierAction());
+                    }
+                    multiplier++;
+
+                } else if (multiplier % 3 == 0)
+                {
+                    StartCoroutine(createCircle());
+                }
+                remaining = Random.Range(35, 70);
                 Instantiate(ally, spawnPosition, spawnRotation);
             } else
             {
                 Instantiate(bossMinions, spawnPosition, spawnRotation);
             }
-            yield return new WaitForSeconds(Random.Range(0.1f, 0.75f));
+            yield return new WaitForSeconds(Random.Range(0.1f - (min * multiplier), 1f - (max * multiplier)));
         }
         StopCoroutine(createCircle());
+    }
+
+    IEnumerator soldierAction()
+    {
+        yield return new WaitForSeconds(0.1f);
+        soldierDialogue.TriggerDialog(false);
     }
 
     public void spawnBoss()
@@ -390,8 +421,6 @@ public class SpawnController : MonoBehaviour {
         GameObject boss = Instantiate(bigBoss);
         BossBehaviour bossBehaviour = boss.GetComponent<BossBehaviour>();
         StartCoroutine(bossWave(bossBehaviour));
-        circleCreator = StartCoroutine(createCircle());
-        coinCreator = StartCoroutine(createCoin());
         StartCoroutine(bossDeath());
     }
 
@@ -416,10 +445,27 @@ public class SpawnController : MonoBehaviour {
         }
     }
 
+    IEnumerator createDiamond()
+    {
+        float radius = coin.transform.GetComponent<SphereCollider>().radius;
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(20, 40));
+            Instantiate(diamond, new Vector3(Random.Range(-8f + radius, 8f - radius), 0.5f, Random.Range(-4.25f + radius, 4.25f - radius)), Quaternion.Euler(55, 0, 0));
+        }
+    }
+
     IEnumerator bossDeath()
     {
         yield return new WaitUntil(() => !bossAlive);
         StopCoroutine(circleCreator);
+        StopAllCoroutines();
         StopCoroutine(coinCreator);
+    }
+
+    public void spawnHealth()
+    {
+        float radius = 0.8f;
+        Instantiate(firstAid, new Vector3(Random.Range(-8f + radius, 8f - radius), 0.5f, Random.Range(-4.25f + radius, 4.25f - radius)), Quaternion.Euler(0, 0, 0));
     }
 }

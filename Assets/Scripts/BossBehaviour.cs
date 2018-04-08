@@ -47,7 +47,6 @@ public class BossBehaviour : MonoBehaviour {
 
     IEnumerator waitForEnter()
     {
-        float originalSpeed = spawnBehaviour.movementSpeed;
         yield return new WaitUntil(() => transform.position.x <= 8 && transform.position.x >= -8 && transform.position.z <= 5.5f && transform.position.z >= -4.25f);
         anim.SetBool("isMoving", false);
         spawnBehaviour.movementSpeed = 0f;

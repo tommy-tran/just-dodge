@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FootmanBehaviour : MonoBehaviour {
     public SpawnBehaviour spawnBehaviour;
+    SoundController soundController;
+    ScoreController scoreController;
     public bool saved;
     new Transform transform;
     Animator anim;
@@ -12,6 +14,8 @@ public class FootmanBehaviour : MonoBehaviour {
     void Start()
     {
         transform = gameObject.GetComponent<Transform>();
+        soundController = GameObject.FindObjectOfType<SoundController>();
+        scoreController = GameObject.FindObjectOfType<ScoreController>();
         anim = gameObject.GetComponent<Animator>();
         anim.SetBool("isMoving", true);
         saved = false;
@@ -19,15 +23,18 @@ public class FootmanBehaviour : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !saved)
         {
             saved = true;
             transform.LookAt(GameObject.FindGameObjectWithTag("Boss").transform);
+            soundController.playSoldierSound();
+            scoreController.gotAlly();
         }
 
         if (other.CompareTag("Boss") && saved) 
         {
             spawnBehaviour.movementSpeed = 0;
+            soundController.playSoldierDieSound();
             anim.SetBool("isDead", true);
         }
     }

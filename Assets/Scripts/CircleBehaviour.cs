@@ -29,6 +29,8 @@ public class CircleBehaviour : MonoBehaviour {
             appearTime *= 0.6f;
             disappearTime *= 0.6f;
         }
+        danger = true;
+        yield return new WaitForSeconds(0.1f);
         Destroy(this.gameObject);
     }
 

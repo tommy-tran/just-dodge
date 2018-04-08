@@ -16,8 +16,20 @@ public class SpawnBehaviour : MonoBehaviour {
         scoreController = GameObject.FindObjectOfType<ScoreController>();
         if (other.CompareTag("Boundary"))
         {
-            scoreController.dodgedEnemy();
-            Destroy(this.gameObject);
+            if (this.gameObject.CompareTag("Enemy"))
+            {
+                scoreController.dodgedEnemy();
+                Destroy(this.gameObject);
+            }
+            else if (this.gameObject.CompareTag("Minion"))
+            {
+                scoreController.dodgedMinion();
+                Destroy(this.gameObject);
+            }
+            else if (this.gameObject.CompareTag("Ally"))
+            {
+                scoreController.missedAlly();
+            }
         }
     }
 }

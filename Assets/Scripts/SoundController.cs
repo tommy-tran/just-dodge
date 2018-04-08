@@ -9,6 +9,10 @@ public class SoundController : MonoBehaviour {
     public AudioClip bossMusic;
     public AudioClip damageSound;
     public AudioClip coinSound;
+    public AudioClip diamondSound;
+    public AudioClip soldierSound;
+    public AudioClip soldierDieSound;
+    public AudioClip firstAidSound;
     public AudioSource musicSource;
     public AudioSource soundSource;
     public float volume;
@@ -24,6 +28,18 @@ public class SoundController : MonoBehaviour {
         musicSource.Play();
     }
 
+    public void playSoldierSound()
+    {
+        soundSource.clip = soldierSound;
+        soundSource.Play();
+    }
+
+    public void playSoldierDieSound()
+    {
+        soundSource.clip = soldierDieSound;
+        soundSource.Play();
+    }
+
     public void playDamageSound()
     {
         soundSource.clip = damageSound;
@@ -33,6 +49,18 @@ public class SoundController : MonoBehaviour {
     public void playCoinSound()
     {
         soundSource.clip = coinSound;
+        soundSource.Play();
+    }
+
+    public void playDiamondSound()
+    {
+        soundSource.clip = diamondSound;
+        soundSource.Play();
+    }
+
+    public void playHealSound()
+    {
+        soundSource.clip = firstAidSound;
         soundSource.Play();
     }
 

@@ -88,17 +88,30 @@ public class PlayerController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy") && isAlive && !invulnerable)
+        if (isAlive && !invulnerable)
         {
-            PlayerDamage();
+            if (other.CompareTag("Enemy"))
+            {
+                PlayerDamage();
+            } else if (other.CompareTag("Minion"))
+            {
+                PlayerDamage();
+            }
         }
     }
 
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Enemy") && isAlive && !invulnerable)
+        if (isAlive && !invulnerable)
         {
-            PlayerDamage();
+            if (other.CompareTag("Enemy"))
+            {
+                PlayerDamage();
+            }
+            else if (other.CompareTag("Minion"))
+            {
+                PlayerDamage();
+            }
         }
     }
 
@@ -115,6 +128,16 @@ public class PlayerController : MonoBehaviour {
             StartCoroutine(invulnerability());
         }
 
+    }
+
+    public void PlayerHeal()
+    {
+        if (health < 3 && isAlive)
+        {
+            soundController.playHealSound();
+            health++;
+            updateHealth();
+        }
     }
 
     IEnumerator invulnerability()
