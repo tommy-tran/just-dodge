@@ -80,6 +80,7 @@ public class GameController : MonoBehaviour {
 
     public void GameOver()
     {
+        gameoverText.GetComponent<Text>().text = "Game Over";
         scoreController.setScore(false);
         gameoverBox.SetActive(true);
         StopAllCoroutines();
