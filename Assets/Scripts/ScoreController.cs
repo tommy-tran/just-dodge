@@ -75,7 +75,7 @@ public class ScoreController : MonoBehaviour {
 
     public void gotAlly()
     {
-        score += 50;
+        score += 20;
         updateScore();
     }
 

@@ -17,7 +17,7 @@ public class CoinBehaviour : MonoBehaviour {
     {
         //yield return new WaitForSeconds(2f);
         float appearTime = 1f;
-        float disappearTime = 0.25f;
+        float disappearTime = 0.2f;
         for (int i = 0; i < 12; i++)
         {
             yield return new WaitForSeconds(appearTime);

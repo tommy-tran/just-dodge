@@ -16,16 +16,19 @@ public class SoundController : MonoBehaviour {
     public AudioSource musicSource;
     public AudioSource soundSource;
     public float volume;
-    public bool isMuted;
+    public float soundVolume;
+    int caseNum;
 
     int currentSong;
 
     void Awake()
     {
         currentSong = 0;
+        soundSource.volume = soundVolume;
         musicSource.clip = bgm[currentSong];
         musicSource.volume = volume;
         musicSource.Play();
+        caseNum = 0;
     }
 
     public void playSoldierSound()
@@ -90,15 +93,21 @@ public class SoundController : MonoBehaviour {
 
     public void mute()
     {
-        isMuted = !isMuted;
-
-        if (isMuted)
+        caseNum = (caseNum + 1) % 3;
+        switch(caseNum)
         {
-            musicSource.mute = true;
-        }
-        else
-        {
-            musicSource.mute = false;
+            case 0:
+                musicSource.mute = false;
+                soundSource.mute = false;
+                break;
+            case 1:
+                musicSource.mute = true;
+                soundSource.mute = false;
+                break;
+            case 2:
+                musicSource.mute = true;
+                soundSource.mute = true;
+                break;
         }
     }
 
