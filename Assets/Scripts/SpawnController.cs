@@ -32,8 +32,9 @@ public class SpawnController : MonoBehaviour {
 
     public void StartWave(int level)
     {
-        spawnLimiter = 10 + level * 2;
+        spawnLimiter = 5 + level;
         coinCreator = StartCoroutine(createCoin());
+        if (level > 6) { circleCreator = StartCoroutine(createCircle()); }
         if (level == 2) { StartCoroutine(createDiamond()); }
         StartCoroutine(spawn(level));
     }
@@ -105,7 +106,7 @@ public class SpawnController : MonoBehaviour {
             radius = currentEnemy.transform.GetComponent<CapsuleCollider>().radius;
 
             // 90% Chance of spawning one enemy at a time
-            if (Random.Range(0, 11) < 10)
+            if (Random.Range(0, 15) < 14)
             {
                 switch (side)
                 {
@@ -130,7 +131,7 @@ public class SpawnController : MonoBehaviour {
 
                 Instantiate(currentEnemy, spawnPosition, spawnRotation);
                 remaining--;
-                yield return new WaitForSeconds(Random.Range(0.1f - (level * 0.004f), 1f - (level * 0.04f)));
+                yield return new WaitForSeconds(Random.Range(0.1f - (level * 0.003f), 1f - (level * 0.03f)));
                 continue;
             }
 
@@ -138,7 +139,7 @@ public class SpawnController : MonoBehaviour {
             switch (side)
             {  
                 case 0:
-                    numEnemies = Mathf.RoundToInt(Mathf.Clamp(Random.Range(1f, 12f), 1, 12));
+                    numEnemies = Random.Range(1, 6);
                     randomPos = Random.Range(-8f, 8f);
                     spawnPosition = new Vector3(randomPos, 0, 8);
                     spawnRotation = Quaternion.Euler(0, 180, 0);
@@ -292,11 +293,10 @@ public class SpawnController : MonoBehaviour {
                     break;
             }
             remaining -= numEnemies;
-
-            
             yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Enemy").Length <= spawnLimiter);
         }
         StopCoroutine(coinCreator);
+        if (circleCreator != null)StopCoroutine(circleCreator);
     }
 
     void spawnLine(int side, GameObject currentEnemy, Vector3 spawnPosition, Quaternion spawnRotation, float radius)
@@ -342,8 +342,8 @@ public class SpawnController : MonoBehaviour {
     {
         int side;
         float radius;
-        float min = 0.01f;
-        float max = 0.1f;
+        float min = 0.008f;
+        float max = 0.08f;
         int multiplier = 0;
 
         yield return new WaitUntil(() => behaviour.arrived);
@@ -437,7 +437,7 @@ public class SpawnController : MonoBehaviour {
         float radius = coin.transform.GetComponent<SphereCollider>().radius;
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(3, 14));
+            yield return new WaitForSeconds(Random.Range(3, 13));
             Instantiate(coin, new Vector3(Random.Range(-8f + radius, 8f - radius), 0.5f, Random.Range(-4.25f + radius, 4.25f - radius)), Quaternion.Euler(90, 0, 0));
         }
     }
@@ -447,7 +447,7 @@ public class SpawnController : MonoBehaviour {
         float radius = coin.transform.GetComponent<SphereCollider>().radius;
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(20, 40));
+            yield return new WaitForSeconds(Random.Range(15, 30));
             Instantiate(diamond, new Vector3(Random.Range(-8f + radius, 8f - radius), 0.5f, Random.Range(-4.25f + radius, 4.25f - radius)), Quaternion.Euler(55, 0, 0));
         }
     }

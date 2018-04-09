@@ -32,7 +32,7 @@ public class ScoreController : MonoBehaviour {
 
     public void gotCoin()
     {
-        score += 5;
+        score += 10;
         updateScore();
         soundController.playCoinSound();
     }
@@ -53,7 +53,7 @@ public class ScoreController : MonoBehaviour {
     public void dodgedMinion()
     {
         minionCount++;
-        if (minionCount > 4)
+        if (minionCount > 3)
         {
             score++;
             minionCount = 0;
@@ -69,7 +69,7 @@ public class ScoreController : MonoBehaviour {
 
     public void missedAlly()
     {
-        score -= 20;
+        score -= 50;
         updateScore();
     }
 
@@ -87,8 +87,8 @@ public class ScoreController : MonoBehaviour {
 
     public void win()
     {
-        score += 300;
-        score += playerController.health * 100;
+        score += 350;
+        score += playerController.health * 150;
         updateScore();
         setScore();
     }

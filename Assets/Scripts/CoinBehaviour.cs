@@ -30,15 +30,6 @@ public class CoinBehaviour : MonoBehaviour {
         Destroy(this.gameObject);
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            scoreController.gotCoin();
-            Destroy(this.gameObject);
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
