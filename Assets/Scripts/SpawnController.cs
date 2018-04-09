@@ -32,7 +32,7 @@ public class SpawnController : MonoBehaviour {
 
     public void StartWave(int level)
     {
-        spawnLimiter = 7 + level;
+        spawnLimiter = 10 + level * 2;
         coinCreator = StartCoroutine(createCoin());
         if (level == 2) { StartCoroutine(createDiamond()); }
         StartCoroutine(spawn(level));
@@ -40,7 +40,7 @@ public class SpawnController : MonoBehaviour {
 
     IEnumerator spawn(int level)
     {
-        remaining = level * 10 + 40;
+        remaining = level * 10 + 50;
         switch (level)
         {
             case 0:
@@ -105,7 +105,7 @@ public class SpawnController : MonoBehaviour {
             radius = currentEnemy.transform.GetComponent<CapsuleCollider>().radius;
 
             // 90% Chance of spawning one enemy at a time
-            if (Random.Range(0, 10) < 9)
+            if (Random.Range(0, 11) < 10)
             {
                 switch (side)
                 {
@@ -130,7 +130,7 @@ public class SpawnController : MonoBehaviour {
 
                 Instantiate(currentEnemy, spawnPosition, spawnRotation);
                 remaining--;
-                yield return new WaitForSeconds(Random.Range(0.1f, 1f));
+                yield return new WaitForSeconds(Random.Range(0.1f - (level * 0.004f), 1f - (level * 0.04f)));
                 continue;
             }
 
@@ -153,7 +153,7 @@ public class SpawnController : MonoBehaviour {
                                     continue;
                                 }
                                 Instantiate(currentEnemy, spawnPosition - new Vector3(i * (radius + 1f), 0, 0), spawnRotation);
-                                yield return new WaitForSeconds(Random.Range(0.1f, 0.9f));
+                                yield return new WaitForSeconds(Random.Range(0.1f, 0.5f));
                             }
                         }
                         else
@@ -165,7 +165,7 @@ public class SpawnController : MonoBehaviour {
                                     continue;
                                 }
                                 Instantiate(currentEnemy, spawnPosition + new Vector3(i * (radius + 1f), 0, 0), spawnRotation);
-                                yield return new WaitForSeconds(Random.Range(0.1f, 0.9f));
+                                yield return new WaitForSeconds(Random.Range(0.1f, 0.5f));
                             }
                         }
                     }
@@ -192,7 +192,7 @@ public class SpawnController : MonoBehaviour {
                                     continue;
                                 }
                                 Instantiate(currentEnemy, spawnPosition - new Vector3(0, 0, i * (radius + 1f)), spawnRotation);
-                                yield return new WaitForSeconds(Random.Range(0.1f, 0.9f));
+                                yield return new WaitForSeconds(Random.Range(0.1f, 0.5f));
                             }
                         }
                         else
@@ -204,7 +204,7 @@ public class SpawnController : MonoBehaviour {
                                     continue;
                                 }
                                 Instantiate(currentEnemy, spawnPosition + new Vector3(0, 0, i * (radius + 1f)), spawnRotation);
-                                yield return new WaitForSeconds(Random.Range(0.1f, 0.9f));
+                                yield return new WaitForSeconds(Random.Range(0.1f, 0.5f));
                             }
                         }
                     }
@@ -230,7 +230,7 @@ public class SpawnController : MonoBehaviour {
                                     continue;
                                 }
                                 Instantiate(currentEnemy, spawnPosition - new Vector3(0, 0, i * (radius + 1f)), spawnRotation);
-                                yield return new WaitForSeconds(Random.Range(0.1f, 0.9f));
+                                yield return new WaitForSeconds(Random.Range(0.1f, 0.5f));
                             }
                         }
                         else
@@ -242,7 +242,7 @@ public class SpawnController : MonoBehaviour {
                                     continue;
                                 }
                                 Instantiate(currentEnemy, spawnPosition + new Vector3(0, 0, i * (radius + 1f)), spawnRotation);
-                                yield return new WaitForSeconds(Random.Range(0.1f, 0.9f));
+                                yield return new WaitForSeconds(Random.Range(0.1f, 0.5f));
                             }
                         }
                     }
@@ -268,7 +268,7 @@ public class SpawnController : MonoBehaviour {
                                     continue;
                                 }
                                 Instantiate(currentEnemy, spawnPosition - new Vector3(i * (radius + 1f), 0, 0), spawnRotation);
-                                yield return new WaitForSeconds(Random.Range(0.1f, 0.9f));
+                                yield return new WaitForSeconds(Random.Range(0.1f, 0.5f));
                             }
                         }
                         else
@@ -280,7 +280,7 @@ public class SpawnController : MonoBehaviour {
                                     continue;
                                 }
                                 Instantiate(currentEnemy, spawnPosition + new Vector3(i * (radius + 1f), 0, 0), spawnRotation);
-                                yield return new WaitForSeconds(Random.Range(0.1f, 0.9f));
+                                yield return new WaitForSeconds(Random.Range(0.1f, 0.5f));
                             }
                         }
                     }
@@ -292,10 +292,7 @@ public class SpawnController : MonoBehaviour {
                     break;
             }
             remaining -= numEnemies;
-            if (numEnemies > 5)
-            {
-                yield return new WaitForSeconds(Random.Range(1f, 2f));
-            }
+
             
             yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Enemy").Length <= spawnLimiter);
         }

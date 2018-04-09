@@ -89,6 +89,7 @@ public class ScoreController : MonoBehaviour {
     {
         score += 300;
         score += playerController.health * 100;
+        updateScore();
         setScore();
     }
 

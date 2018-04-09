@@ -29,6 +29,11 @@ public class GameController : MonoBehaviour {
         StartCoroutine(waitForDialogue());
     }
 
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
     IEnumerator waitForDialogue()
     {
         yield return new WaitUntil(() => !dialogueManager.getState());
@@ -90,6 +95,7 @@ public class GameController : MonoBehaviour {
     void win()
     {
         gameoverText.GetComponent<Text>().text = "You win!";
+        scoreEnemies();
         scoreController.win();
         gameoverBox.SetActive(true);
         StopAllCoroutines();
@@ -109,37 +115,71 @@ public class GameController : MonoBehaviour {
         GODialogueTrigger.TriggerDialog(false);
     }
 
-    public void Retry()
+    public void clearEnemies()
     {
-        Start();
-        scoreController.resetScore();
-        scoreController.setScore();
-        gameoverBox.SetActive(false);
-        GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             Destroy(enemy);
         }
 
-        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Minion"))
+        foreach (GameObject minion in GameObject.FindGameObjectsWithTag("Minion"))
         {
-            Destroy(enemy);
+            Destroy(minion);
         }
 
-        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Item"))
+        foreach (GameObject item in GameObject.FindGameObjectsWithTag("Item"))
         {
-            Destroy(enemy);
+            Destroy(item);
         }
 
-        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Ally"))
+        foreach (GameObject ally in GameObject.FindGameObjectsWithTag("Ally"))
         {
-            Destroy(enemy);
+            Destroy(ally);
         }
 
         foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Boss"))
         {
             Destroy(enemy);
         }
+    }
+
+    public void scoreEnemies()
+    {
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            scoreController.dodgedEnemy();
+            Destroy(enemy);
+        }
+
+        foreach (GameObject minion in GameObject.FindGameObjectsWithTag("Minion"))
+        {
+            scoreController.dodgedMinion();
+            Destroy(minion);
+        }
+
+        foreach (GameObject item in GameObject.FindGameObjectsWithTag("Item"))
+        {
+            Destroy(item);
+        }
+
+        foreach (GameObject ally in GameObject.FindGameObjectsWithTag("Ally"))
+        {
+            Destroy(ally);
+        }
+
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Boss"))
+        {
+            Destroy(enemy);
+        }
+    }
+
+    public void Retry()
+    {
+        Start();
+        scoreController.resetScore();
+        scoreController.setScore();
+        gameoverBox.SetActive(false);
+        clearEnemies();
         playerController.retry();
     }
 }

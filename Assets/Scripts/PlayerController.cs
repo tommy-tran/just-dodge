@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour {
     Animator anim;
     Rigidbody playerRigidbody;
     
-    
     float v;
     float h;
 
