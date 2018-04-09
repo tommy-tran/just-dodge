@@ -149,7 +149,7 @@ public class SpawnController : MonoBehaviour {
                         {
                             for (int i = 0; i < numEnemies; i++)
                             {
-                                if (Random.Range(0, 1f) <= 0.3f)
+                                if (Random.Range(0, 1f) <= 0.35f)
                                 {
                                     continue;
                                 }
@@ -161,7 +161,7 @@ public class SpawnController : MonoBehaviour {
                         {
                             for (int i = 0; i < numEnemies; i++)
                             {
-                                if (Random.Range(0, 1f) <= 0.3f)
+                                if (Random.Range(0, 1f) <= 0.35f)
                                 {
                                     continue;
                                 }
@@ -188,7 +188,7 @@ public class SpawnController : MonoBehaviour {
                         {
                             for (int i = 0; i < numEnemies; i++)
                             {
-                                if (Random.Range(0, 1f) <= 0.3f)
+                                if (Random.Range(0, 1f) <= 0.35f)
                                 {
                                     continue;
                                 }
@@ -200,7 +200,7 @@ public class SpawnController : MonoBehaviour {
                         {
                             for (int i = 0; i < numEnemies; i++)
                             {
-                                if (Random.Range(0, 1f) <= 0.3f)
+                                if (Random.Range(0, 1f) <= 0.35f)
                                 {
                                     continue;
                                 }
@@ -226,7 +226,7 @@ public class SpawnController : MonoBehaviour {
                         {
                             for (int i = 0; i < numEnemies; i++)
                             {
-                                if (Random.Range(0, 1f) <= 0.3f)
+                                if (Random.Range(0, 1f) <= 0.35f)
                                 {
                                     continue;
                                 }
@@ -238,7 +238,7 @@ public class SpawnController : MonoBehaviour {
                         {
                             for (int i = 0; i < numEnemies; i++)
                             {
-                                if (Random.Range(0, 1f) <= 0.3f)
+                                if (Random.Range(0, 1f) <= 0.35f)
                                 {
                                     continue;
                                 }
@@ -264,7 +264,7 @@ public class SpawnController : MonoBehaviour {
                         {
                             for (int i = 0; i < numEnemies; i++)
                             {
-                                if (Random.Range(0, 1f) <= 0.3f)
+                                if (Random.Range(0, 1f) <= 0.35f)
                                 {
                                     continue;
                                 }
@@ -276,7 +276,7 @@ public class SpawnController : MonoBehaviour {
                         {
                             for (int i = 0; i < numEnemies; i++)
                             {
-                                if (Random.Range(0, 1f) <= 0.3f)
+                                if (Random.Range(0, 1f) <= 0.35f)
                                 {
                                     continue;
                                 }

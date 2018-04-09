@@ -16,16 +16,16 @@ public class CoinBehaviour : MonoBehaviour {
     IEnumerator Visibility()
     {
         //yield return new WaitForSeconds(2f);
-        float appearTime = 1f;
-        float disappearTime = 0.2f;
-        for (int i = 0; i < 12; i++)
+        float appearTime = 1.2f;
+        float disappearTime = 0.1f;
+        for (int i = 0; i < 15; i++)
         {
             yield return new WaitForSeconds(appearTime);
             renderer.enabled = false;
             yield return new WaitForSeconds(disappearTime);
             renderer.enabled = true;
-            appearTime *= 0.6f;
-            disappearTime *= 0.5f;
+            appearTime *= 0.65f;
+            disappearTime *= 0.55f;
         }
         Destroy(this.gameObject);
     }
@@ -34,7 +34,7 @@ public class CoinBehaviour : MonoBehaviour {
     {
         if (other.CompareTag("Player"))
         {
-            scoreController.gotCoin();
+            scoreController.gotCoin(gameObject.transform.position.x, gameObject.transform.position.z);
             Destroy(this.gameObject);
         }
     }

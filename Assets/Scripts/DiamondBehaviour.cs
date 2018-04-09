@@ -16,9 +16,9 @@ public class DiamondBehaviour : MonoBehaviour {
     IEnumerator Visibility()
     {
         //yield return new WaitForSeconds(2f);
-        float appearTime = 1f;
-        float disappearTime = 0.20f;
-        for (int i = 0; i < 12; i++)
+        float appearTime = 1.6f;
+        float disappearTime = 0.1f;
+        for (int i = 0; i < 15; i++)
         {
             yield return new WaitForSeconds(appearTime);
             renderer.enabled = false;

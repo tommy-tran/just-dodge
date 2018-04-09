@@ -13,7 +13,10 @@ public class ScoreController : MonoBehaviour {
     public GameObject usernameInput;
     public HighScores highscores;
     public GameObject submitButton;
-
+    public GameObject popUpParent;
+    public GameObject scorePopUp;
+    Canvas canvas;
+    Transform parentTransform;
     public void sendScore()
     {
         string username = usernameInput.GetComponent<InputField>().text;
@@ -28,11 +31,15 @@ public class ScoreController : MonoBehaviour {
     {
         score = 0;
         minionCount = 0;
+        parentTransform = popUpParent.transform;
+        canvas = GameObject.FindObjectOfType<Canvas>();
     }
 
-    public void gotCoin()
+    public void gotCoin(float x, float z)
     {
         score += 10;
+        GameObject temp = Instantiate(scorePopUp, popUpParent.transform);
+        temp.GetComponent<PointTextBehaviour>().text = "+10";
         updateScore();
         soundController.playCoinSound();
     }
@@ -40,6 +47,8 @@ public class ScoreController : MonoBehaviour {
     public void gotDiamond()
     {
         score += 100;
+        GameObject temp = Instantiate(scorePopUp, popUpParent.transform);
+        temp.GetComponent<PointTextBehaviour>().text = "+100";
         updateScore();
         soundController.playDiamondSound();
     }
@@ -70,12 +79,16 @@ public class ScoreController : MonoBehaviour {
     public void missedAlly()
     {
         score -= 50;
+        GameObject temp = Instantiate(scorePopUp, popUpParent.transform);
+        temp.GetComponent<PointTextBehaviour>().text = "-50";
         updateScore();
     }
 
     public void gotAlly()
     {
         score += 20;
+        GameObject temp = Instantiate(scorePopUp, popUpParent.transform);
+        temp.GetComponent<PointTextBehaviour>().text = "+20";
         updateScore();
     }
 
