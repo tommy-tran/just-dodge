@@ -2,7 +2,14 @@
 #### Created in Unity3D 
 #### [Click here to try!](https://tommytran.xyz/just-dodge)
 ## Status
-In development
+Complete (will probably remake later on)
+
+## Features
+* Leaderboard implemented using the Dreamlo API
+* Get points by collecting coins/diamonds or finishing levels
+* Boss level (11th level)
+* Simple character animations
+* Life system (Player  has a chance to be given an extra life if surviving with only one on certain levels)
 
 ## Description
 Just Dodge is a game where the player is stuck within a small area and must avoid all incoming threats and obstacles to their characters. 
@@ -12,9 +19,10 @@ There are unique enemies throughout the levels:
 * Slime: Normal enemy
 * Ghost: Disappears and reappears while moving through play area (still can get hit when they are invisible)
 * Bat: Fast enemies, wings aren't dangerous, speed up in play area
-* Bunny: Fast, weird jumping animation
+* Bunny: Fast, jumping animation
+* Golem: Fast, infinite on boss level
 
-# Controls
+## Controls
 Move up: :arrow_up:, [W]
 
 Move down: :arrow_down:, [S]
@@ -62,10 +70,11 @@ All music is free to use with credit of artists
 
 ## To do (may not implement some of these)
 * More interesting spawns during each round (eg. every 3rd round enemies only spawn on the side)
-* Leaderboard
-* Boss fight
-* More enemies and danger mechanics
-* Way to get extra health
-* Endless stages
-* Collect coins for extra points
 * Multiplayer
+* More enemies and danger mechanics
+* Endless stages
+* <del>Leaderboard</del>
+* <del>Boss fight</del>
+* <del>Way to get extra health</del>
+* <del>Collectibles for extra points</del>
+
